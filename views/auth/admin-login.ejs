@@ -1,0 +1,105 @@
+<%- include('../includes/head.ejs') %>
+
+<style>
+    #admin-login-card-main {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  #login {
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    height: 20rem;
+    border: 1px solid #bfbfbf;
+    border-radius: 10px;
+        box-shadow: 0px 2px 5px 0px black;
+
+  }
+  #username-input, #password-input {
+    z-index: 0;
+    transition: all 0.2s ease;
+    width: 75%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    margin: 5px 0px;
+  }
+  #username-input:focus, #password-input:focus {
+border: 1px solid black;
+outline: none;
+  }
+  #username {
+    position: absolute;
+    background-color: white;
+    padding: 0px 5px;
+    margin-left: 5px 10px;
+    color: black;
+    z-index: 1;
+    transition: all 0.2s ease;
+  }
+#admin-login-btn {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    border-radius: 3px;
+    margin-top: 3rem;
+    padding: 1px 30px;
+}
+#admin-login-btn:hover {
+    color: white;
+    background-color: black;
+}
+</style>
+<div id="admin-login-card-main">
+<form id="login" action="/admin/login" method="POST">
+<h2 style="align-self: flex-start;margin: 25px;">Admin Login</h2>
+    
+  <input
+    type="text"
+    id="username-input"
+    onfocus="onFocus()"
+    onblur="onBlur(event)"
+    required
+    name="username"
+    placeholder="username"
+  />
+  <!-- <span id="username" onclick="onFocus();onBlur(event)">Username</span> -->
+
+  <input
+    type="password"
+    id="password-input"
+    onfocus="onFocus()"
+    onblur="onBlur(event)"
+    required
+    name="password"
+    placeholder="password"
+  />
+  <button type="submit" id="admin-login-btn">Login</button>
+</form>
+</div>
+<%-include('../includes/cookies-warning.ejs')%>
+
+<script>
+  const usernameInput = document.getElementById("username-input");
+  const username = document.getElementById("username");
+
+  function onFocus() {
+    username.style.fontSize = "10px";
+    username.style.marginBottom = "40px";
+     usernameInput.focus()
+  }
+  function onBlur(e) {
+    if (e.target.value === null) {
+      username.style.fontSize = "";
+      username.style.marginBottom = "0px"; 
+    }   
+  }
+</script>
+
+<%-include('../includes/end.ejs')%>

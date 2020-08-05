@@ -1,0 +1,23 @@
+<%- include('../includes/head.ejs') %>
+<main>
+    <h1><%=secret%></h1>
+    <input type="button" id="remaining-time" value="<%=remaining%>"></button>
+    <form action="/totp-validate" method="POST">
+        <input type="number" name="otp">
+        <button type="submit">Check OTP</button>
+    </form>
+</main>
+<script>
+
+const timer = document.getElementById("remaining-time")
+setInterval(() => {
+    if (timer.value > 0) {
+    return timer.value-=1
+    } else {
+        return location.reload()
+    }
+}, 1000);
+
+
+</script>
+<%- include('../includes/end.ejs') %>

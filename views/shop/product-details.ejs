@@ -1,0 +1,219 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/navigation.ejs') %> 
+
+<style>
+  @media only screen and (max-width: 800px) {
+    main {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+    .product-info {
+      margin-top: 50px;
+      width: 95vw;
+      height: 500px;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+    .product-image {
+      display: flex;
+      justify-content: center;
+    }
+    .product-image img {
+      width: 95vw;
+      margin: 5px;
+    }
+    .buying-options-buttons {
+      width: 100vw;
+      margin-top: 50px;
+    }
+  }
+  @media only screen and (min-width: 801px) {
+    main {
+      align-items: stretch;
+      justify-content: space-evenly;
+    }
+    .product-image {
+      width: 50vw;
+      height: 100%;
+    }
+    .product-info {
+      width: 40vw;
+      /* justify-content: stretch; */
+      align-items: flex-start;
+      overflow-x: hidden;
+    }
+    .buying-options-buttons {
+      width: 40vw;
+      margin: 400px 0px;
+      position: absolute;
+    }
+  }
+  main {
+    display: flex;
+    margin: 10vh 5px;
+  }
+  .product-image img {
+    border: 1px solid #fbfbfb;
+    box-shadow: 0px 5px 10px -5px black;
+  }
+  li {
+    list-style: none;
+  }
+  .size-btn {
+    padding: 5px;
+    width: 60px;
+    margin: 0px 1px;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+  }
+  .size-btn:hover {
+    background-color: black;
+    color: #ffffff;
+  }
+  .sizes-list {
+    display: flex;
+    justify-content: flex-start;
+    /* margin: 15px 0px; */
+  }
+  .product-sizes {
+    display: flex;
+    align-items: flex-start;
+  }
+  .product-info {
+    display: flex;
+    flex-direction: column;
+  }
+  #price {
+    justify-content: flex-start;
+    margin: 25px 25px;
+  }
+  label {
+    width: 7.5vw;
+    font-size: 10px;
+  }
+  .product-description {
+    color: gray;
+    line-height: 0.5;
+    font-size: 12px;
+  }
+
+  .product-price-details-discount {
+    margin: 0px 20px;
+  }
+  .product-price-details-price {
+    font-size: 10px;
+  }
+  .product-price-details-ic_rent_mrp {
+    font-size: 20px;
+  }
+  .buying-options-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .buying-options-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    margin: 1px 0px;
+    padding: 10px;
+    width: 300px;
+  }
+  .buying-options-btn:hover,
+  .buying-options-btn-highlighted:hover {
+    background-color: #606060;
+    color: white;
+    border: 1px solid #606060;
+  }
+  .buying-options-btn-highlighted {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    margin: 1px 0px;
+    padding: 10px;
+    width: 300px;
+  }
+  /* .buying-options-btn-highlighted:hover {
+      background-color: #606060;
+      color: white;
+      border: 1px solid #606060;
+
+  } */
+</style>
+
+
+<main>
+  <div class="product-image">
+    <img src="<%=product.imageUrl%>" class="product-image" />
+  </div>
+  <div class="product-info">
+    <div class="product-name">
+      <h4 class="product-product_name"><%=product.product_name%></h4>
+      <h6 class="product-description"><%=product.description%></h6>
+    </div>
+    <div id="price">
+      <span
+        id="discountedPrice"
+        class="product-price-details product-price-details-ic_rent_mrp"
+        style="font-size: 20px;"
+        >&#x20b9;<%=product.ic_rent_mrp%></span
+      >
+      <span
+        id="originalPrice"
+        class="product-price-details product-price-details-price"
+        >&#x20b9;<%=product.price%></span
+      >
+      <span
+        id="discount"
+        class="product-price-details product-price-details-discount"
+        ><%=product.discount%>% off</span
+      >
+    </div>
+    <div class="product-sizes">
+      <!-- <label>Sizes Available: </label> -->
+      <ul class="sizes-list">
+        <% for (size of product.size) { %>
+        <li><button type="button" class="size-btn"><%=size%></button></li>
+        <% } %>
+      </ul>
+    </div>
+
+    <% if(!admin) { %>
+    <div class="buying-options-buttons">
+      <button type="submit" class="buying-options-btn">Rent Now</button>
+      <button type="submit" class="buying-options-btn-highlighted">
+        Add To Cart
+      </button>
+      <button type="submit" class="buying-options-btn-highlighted">
+        Add To Wishlist
+      </button>
+    </div>
+    <% } else { %>
+      <div class="buying-options-buttons">
+      <button type="submit" class="buying-options-btn-highlighted">
+        Edit Product
+      </button>
+      <button type="submit" class="buying-options-btn-highlighted">
+        Delete Product
+      </button>
+    </div>
+      <% } %>
+  </div>
+</main>
+<script>
+  //   const sizeBtn = document.getElementsByClassName("size-btn");
+
+  //   for (let i = 0; i < sizeBtn.length; i++) {
+  //     sizeBtn[i].addEventListener("click", function () {
+  //       sizeBtn[i].style.backgroundColor =
+  //         sizeBtn[i].style.backgroundColor === "white" ? "black" : "white";
+  //         sizeBtn[i].style.color =
+  //         sizeBtn[i].style.backgroundColor === "white" ? "black" : "white";
+  //     });
+  //   }
+</script>
+<%-include('../includes/end.ejs')%>

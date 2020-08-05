@@ -1,0 +1,202 @@
+<%- include("../includes/head.ejs") %> 
+<%- include("../includes/navigation.ejs")%>
+
+
+<div id="cart-view">
+<!-- Total -->
+<div id="totalCartAmount">
+  <!-- Apply Coupons -->
+  <div id="couponDiv">
+    <h6>Apply Coupons</h6>
+    <div id="couponCodeInput">
+      <input id="coupon" type="text" placeholder="Enter coupon code" />
+      <button id="couponBtn" type="button" class="btn btn-light">
+        Apply
+      </button>
+    </div>
+  </div>
+  <hr
+    style="
+      height: 1px;
+      border-width: 0;
+      color: gray;
+      background-color: gray;
+      margin-top: 30px;
+    "
+  />
+
+  <!-- Price Breakdown -->
+  <div>
+    <h6>Price Details</h6>
+    <div>
+      <div id="priceBreakdown">
+        <p id="priceDetailLeft">Cart Total</p>
+        <p id="priceDetailRight">4000</p>
+      </div>
+
+      <div id="priceBreakdown">
+        <p id="priceDetailLeft">Discount</p>
+        <p id="priceDetailRight">-100</p>
+      </div>
+
+      <div id="priceBreakdown">
+        <p id="priceDetailLeft">Order Total</p>
+        <p id="priceDetailRight">3900</p>
+      </div>
+
+      <div id="priceBreakdown">
+        <p id="priceDetailLeft">Delivery Charges</p>
+        <p id="priceDetailRight">190</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 100px;"></div>
+
+<!-- Cart Item -->
+<div id="cartItem">
+  <div id="prodcutThumbnail">
+    <img src="/assets/images/tShirts/sample.png" height="200px" />
+  </div>
+  <div id="productInfo">
+    <div style="display: flex;">
+      <!-- Product Name -->
+      <h2 style="justify-self: flex-start; width: 30vw;">
+        <strong>T-Shirt</strong>
+      </h2>
+      <!-- Product Price -->
+      <h6 id="productValue" style="align-self: flex-end;">&#x20b9;1000</h6>
+    </div>
+
+    <!-- Product Description -->
+    <p style="color: gray; font-size: 12px;">
+      Men Black and White Sporty T-Shirt
+    </p>
+
+    <!-- Quantity -->
+    <p style="margin: 15px 0px;"><strong>Quantity</strong></p>
+    <select id="productValue">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+
+    <button type="button" class="btn btn-secondary" id="removeBtn">
+      Remove
+    </button>
+  </div>
+</div>
+
+<!-- Cart Item -->
+<div id="cartItem">
+  <div id="prodcutThumbnail">
+    <img src="/assets/images/Shirts/1.png" height="200px" />
+  </div>
+  <div id="productInfo">
+    <div style="display: flex;justify-content: stretch;">
+      <!-- Product Name -->
+      <h2 style="justify-self: flex-start; width: 30vw;">
+        <strong>Shirt</strong>
+      </h2>
+      <!-- Product Price -->
+      <h6 id="productValue" style="justify-self: flex-end;">&#x20b9;1000</h6>
+    </div>
+
+    <!-- Product Description -->
+    <p style="color: gray; font-size: 12px;">
+      <!-- Men White Half-Sleeves Shirt -->
+      Summer Mens White Dress Shirts Short Sleeves Cotton Social Floral
+    </p>
+
+    <!-- Quantity -->
+    <p style="margin: 15px 0px;"><strong>Quantity</strong></p>
+    <select id="productValue">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+
+    <button type="button" class="btn btn-secondary" id="removeBtn">
+      Remove
+    </button>
+  </div>
+</div>
+
+<!-- Cart Item -->
+<div id="cartItem">
+  <div id="prodcutThumbnail">
+    <img src="/assets/images/Jeans/2.png" height="200px" />
+  </div>
+  <div id="productInfo">
+    <div style="display: flex;">
+      <!-- Product Name -->
+      <h2 style="justify-self: flex-start; width: 30vw;">
+        <strong>Jeans</strong>
+      </h2>
+      <!-- Product Price -->
+      <h6 id="productValue" style="align-self: flex-end;">&#x20b9;1000</h6>
+    </div>
+
+    <!-- Product Description -->
+    <p style="color: gray; font-size: 12px;">
+      Men's Trendy Light Blue Plain Washed Stretch Skinny Distressed
+    </p>
+
+    <!-- Quantity -->
+    <p style="margin: 15px 0px;"><strong>Quantity</strong></p>
+    <select id="productValue">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+
+    <button type="button" class="btn btn-secondary" id="removeBtn">
+      Remove
+    </button>
+  </div>
+</div>
+
+<!-- Cart Item -->
+<div id="cartItem">
+  <div id="prodcutThumbnail">
+    <img src="/assets/images/Cardigans/5.png" height="200px" />
+  </div>
+  <div id="productInfo">
+    <div style="display: flex;">
+      <!-- Product Name -->
+      <h2 style="justify-self: flex-start; width: 30vw;">
+        <strong>Cardigan</strong>
+      </h2>
+      <!-- Product Price -->
+      <h6 id="productValue" style="align-self: flex-end;">&#x20b9;1000</h6>
+    </div>
+
+    <!-- Product Description -->
+    <p style="color: gray; font-size: 12px;">
+      Men's Crew Neck Jumper | Embroidered Logo | Henbury H725
+    </p>
+
+    <!-- Quantity -->
+    <p style="margin: 15px 0px;"><strong>Quantity</strong></p>
+    <select id="productValue">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+
+    <button type="button" class="btn btn-secondary" id="removeBtn">
+      Remove
+    </button>
+  </div>
+</div>
+</div>
+<%- include("../includes/end.ejs") %>

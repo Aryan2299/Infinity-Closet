@@ -1,0 +1,36 @@
+<header id="navbar">
+  <div id="home">
+    <a id="homeNav" href="/">Logo</a>
+
+    <a id="men" href="/men/products" style="text-decoration: none;">Men</a>
+    <a id="men" href="/women/products" style="text-decoration: none;">Women</a>
+  </div>
+  <div id="searchInput">
+    <input id="searchbar" type="text" placeholder="Search..." />
+    <i class="fa fa-search"></i>
+  </div>
+
+  <div id="userLinks">
+    <% if(firstName !== "") { %>
+    <p style="margin: 0px 10px;" id="logged-in-user-name">
+      Hi, <%=firstName%>
+      <i class="fa fa-caret-down" style="font-size: 15px; color: white;"></i>
+    </p>
+
+    <div id="logged-in-user-options">
+      <form action="/logout" method="POST">
+        <button type="submit" id="logout-option">Log Out</button>
+      </form>
+      <button type="button" id="wishlist-option">My Wishlist</button>
+    </div>
+    <a style="margin: 12px 10px; color: white;" href="/cart"
+      ><img src="/assets/icons/icons8-wardrobe-48.png" height="30px"
+    /></a>
+    <% } else { %>
+    <a id="men" href="/login" style="text-decoration: none;">Login</a>
+    <a style="margin: 15px 10px; color: white;" href="/cart"
+      ><img src="/assets/icons/icons8-wardrobe-48.png" height="30px"
+    /></a>
+    <% } %>
+  </div>
+</header>

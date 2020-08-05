@@ -1,0 +1,369 @@
+const Product = require("../models/product");
+const isAuth = require("../middleware/is-auth");
+const Jeans = require("../models/product").Jeans;
+const TShirts = require("../models/product").TShirts;
+
+exports.getHomePage = (req, res, next) => {
+  console.log(req.user)
+  res.render("shop/home", {
+    pageTitle: "Shop",
+    path: "/",
+    firstName: req.user ? req.user.firstName : "",
+    admin: false,
+  });
+};
+
+exports.getProductsMen = (req, res, next) => {
+  Product.find()
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getAccessoriesMen = (req, res, next) => {
+  Product.find()
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/accessories",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getTShirtsMen = (req, res, next) => {
+  Product.find({ categories: "T-shirts" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/tshirts",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getShirtsMen = (req, res, next) => {
+  Product.find({ categories: "Shirts" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/shirts",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+// exports.getTShirtsMen = (req, res, next) => {
+//   Product.find({ categories: "T-shirts" })
+//     .then((products) => {
+//       console.log(products);
+//       res.render("shop/productsMen", {
+//         products: products,
+//         pageTitle: "Shop",
+//         path: "/men/products/tshirts",
+//       });
+//     })
+//     .catch((err) => console.log(err));
+// };
+
+exports.getJeansMen = (req, res, next) => {
+  Product.find({ categories: "Jeans" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/jeans",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getTrousersMen = (req, res, next) => {
+  Product.find({ categories: "Trousers" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/trousers",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getJacketsMen = (req, res, next) => {
+  Product.find({ categories: "Jackets" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/jackets",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getHoodiesMen = (req, res, next) => {
+  Product.find({ categories: "Hoodies" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/hoodies",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getCardigansMen = (req, res, next) => {
+  Product.find({ categories: "Jumpers" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/cardigans",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getBlazersMen = (req, res, next) => {
+  Product.find({ categories: "Blazers" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/blazers",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getShortsMen = (req, res, next) => {
+  Product.find({ categories: "Shorts" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/shorts",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getSportsMen = (req, res, next) => {
+  Product.find({ categories: "Sportswear" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/sports",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getBasicsMen = (req, res, next) => {
+  Product.find()
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/basics",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getFormalsMen = (req, res, next) => {
+  Product.find({ categories: "Formals" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/formals",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getCasualsMen = (req, res, next) => {
+  Product.find({ categories: "Casuals" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/casuals",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getPartyMen = (req, res, next) => {
+  Product.find()
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/party",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getIndianMen = (req, res, next) => {
+  Product.find({ categories: "Ethnicwear" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/indian",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getSummerMen = (req, res, next) => {
+  Product.find({ categories: "Summer" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/summer",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getWinterMen = (req, res, next) => {
+  Product.find({ categories: "Winter" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/winter",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getSpringMen = (req, res, next) => {
+  Product.find({ categories: "Spring Fest" })
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/spring",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getSaleMen = (req, res, next) => {
+  Product.find()
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/men/products/sale",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.getProductDetails = (req, res, next) => {
+  const prodId = req.params.productId;
+  Product.findById(prodId)
+    .then((product) => {
+      res.render("shop/product-details", {
+        product: product,
+        pageTitle: product.product_name,
+        firstName: req.user ? req.user.firstName : "",
+        admin: false
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.postProductDetails = (req, res, next) => {
+  const prodId = req.body.productId;
+  console.log("ProductId", prodId);
+  res.redirect("/product/" + prodId);
+};
+
+exports.getCart = (req, res, next) => {
+  res.render("shop/cart", {
+    pageTitle: "Cart",
+    firstName: req.user ? req.user.firstName : ""
+  });
+};

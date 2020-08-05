@@ -1,0 +1,94 @@
+<%- include('../includes/head.ejs') %> 
+<%- include('../includes/navigation.ejs') %> 
+
+
+  <% if(!admin) { %>
+<div >
+  <a
+      href="#"
+      id="hamburgerMenu"
+      style="left: 0; top: 25vh; position: fixed;"
+      onclick="showSideBar()"
+      ><img src="/assets/icons/menu-icon.png" height="35px"
+    /></a>
+</div>
+
+<% } %>
+
+  <% if(!admin) { %>
+    <div id="newArrivals">
+    <ul class="container">
+    <% } else { %>
+    <div id=""  style="padding-top: 15vh">
+      <ul class="container">
+      <% } %>
+        
+            <% for (product of products) { %>
+              <% if(!admin) { %>
+          <li class="col-sm-3 productCard"  onclick="window.location='/product/<%=product._id%>'">
+                <% } else { %>
+          <li class="col-sm-3 productCard" style="border: 1px solid #bfbfbf;min-height: 500px;max-height: 500px;min-width: 300px;max-width: 300px;">
+
+                  <% } %>
+            <img
+              src="<%= product.imageUrl %>"
+              height="75%"
+              width="100%"
+            />
+            <div id="info">
+              <h5 style="line-height:1;white-space:nowrap;" id="productName"><%= product.product_name %></h5>
+              <div id="price">
+                <span id="discountedPrice">&#x20b9;<%= product.ic_rent_mrp %></span>
+                <span id="originalPrice">&#x20b9;<%= product.price %></span>
+                <span id="discount"><%= product.discount %>% off</span>
+              </div>
+            </div>
+            <% if(!admin) { %>
+            <form action="/product/<%=product._id%>" class="form-submit-product-details">
+              <div class="buying-options">
+                <input type="hidden" name="productId" value="<%=product._id%>">
+              <button type="submit" class="btn btn-success rent-now-btn" style="padding: 3px 10px; font-size: 15px;">Rent Now</button>
+              <a href="/cart"><button type="button" class="btn btn-primary add-to-cart-btn" style="padding: 3px 10px; font-size: 15px;">Add To Cart</button></a>
+              <a href="#"><i class="fa fa-heart" style="font-size: 27px;"></i></a>
+
+              </div>
+            
+            </form>
+            <% } else { %>
+              <!-- <form action="/product/<%=product._id%>" class="form-submit-product-details"> -->
+              <div class="buying-options" style="display: flex;justify-content: center;">
+                <input type="hidden" name="productId" value="<%=product._id%>">
+       
+                  <a href="/admin/edit-product/<%= product._id %>?edit=true"><button style="margin: 5px;" type="submit" class="btn btn-success rent-now-btn" style="padding: 3px 10px; font-size: 15px;">Edit</button></a>
+                </form>
+                <form action="/admin/delete-product" method="POST">
+                <input type="hidden" name="productId" value="<%=product._id%>">
+              <button style="margin: 5px;" type="submit" class="btn btn-primary add-to-cart-btn" style="padding: 3px 10px; font-size: 15px;">Delete</button>
+                </form>
+            
+            </form>
+              <% } %>
+          </li>
+<% } %>
+          </ul>
+</div>
+
+<% if(!admin) { %>
+<%- include('../includes/sidenav.ejs') %>
+<% } else { %>
+<%- include('../includes/admin-nav.ejs') %>
+
+  <% } %>
+<script>
+
+</script>
+</div>
+
+<% if(!admin) { %>
+<%- include('../includes/dropdown.ejs') %>
+<% } %>
+
+  <% if(!admin) { %>
+<%- include('../includes/footer.ejs') %>
+<% } %>
+<%- include('../includes/end.ejs') %>

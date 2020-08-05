@@ -1,0 +1,49 @@
+<style>
+    #admin-navbar-option-products {
+        left: 0px;
+        position: absolute;
+    }
+    #admin-navbar-option-add-product {
+        left: 7.5em;
+        position: absolute;
+    }
+    #admin-navbar-option-logout {
+        right: 0px;
+        position: absolute;
+    }
+    #navbar {   
+        height: 4em;
+        background-color: black;
+    }
+    #admin-navbar-options {
+        display: flex;
+        align-items: center;
+    }
+    #products-btn, #add-product-btn, #admin-navbar-option-logout-btn{
+        height: 4em;
+        width: 7.5em;
+        background-color: black;
+        color: white;
+        border: none;
+    }
+    #products-btn:hover, #add-product-btn:hover, #admin-navbar-option-logout-btn:hover {
+        background-color: #bfbfbf;
+        color: black;
+    }
+</style>
+
+<header id="navbar" style="top: 0;right: 0;position: fixed;">
+<div id="admin-navbar-options"><a href="/admin/products/men" id="admin-navbar-option-products"><button id="products-btn">Products</button></a>
+    <a href="/admin/add-product" id="admin-navbar-option-add-product"><button id="add-product-btn">Add Product</button></a>
+
+    <div id="searchInput">
+    <input id="searchbar" type="text" placeholder="Search..." />
+    <i class="fa fa-search"></i>
+  </div>
+
+    <form action="/admin/logout" method="post" id="admin-navbar-option-logout">
+        <button id="admin-navbar-option-logout-btn" type="submit">Logout</button>
+    </form>
+</div>
+    
+</header>

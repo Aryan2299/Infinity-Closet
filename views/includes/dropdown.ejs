@@ -1,0 +1,42 @@
+<div id="optionsBar">
+  <div id="dropdown">
+    <button
+      id="sortByButton"
+      class="btn btn-secondary"
+      onclick="showSortByOptions()"
+    >
+      Sort By <i class="fa fa-angle-down" style="margin-left: 10px;"></i>
+    </button>
+
+    <div id="sortByOptions" class="sortByOpt">
+      <button type="button" class="btn btn-light">Recommended</button>
+      <button type="button" class="btn btn-light">
+        Price: High to Low
+      </button>
+      <button type="button" class="btn btn-light">
+        Price: Low to High
+      </button>
+      <button type="button" class="btn btn-light">Popularity</button>
+      <button type="button" class="btn btn-light">Discount</button>
+    </div>
+  </div>
+
+  <div id="hover"></div>
+
+  <div id="dropdown">
+    <button
+      id="sortByButton"
+      class="btn btn-secondary"
+      onclick="showFilterOptions()"
+    >
+      Filter By <i class="fa fa-angle-down" style="margin-left: 10px;"></i>
+    </button>
+
+    <div id="sortByOptions" class="filterOpt">
+      <button type="button" class="btn btn-light">Brand</button>
+      <button type="button" class="btn btn-light">Category</button>
+      <button type="button" class="btn btn-light">Size</button>
+      <button type="button" class="btn btn-light">Colour</button>
+    </div>
+  </div>
+</div>

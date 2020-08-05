@@ -1,0 +1,497 @@
+<%- include('../includes/head.ejs') %> <%-
+include('../includes/admin-nav.ejs')%>
+
+<style>
+  .addCategoryBtn {
+    color: black;
+    background-color: transparent;
+    border: 1px solid black;
+    margin: 5px;
+    width: 150px;
+  }
+  .addCategoryBtn:hover {
+    background-color: grey;
+    color: white;
+  }
+  .addedCategory,
+  .addCategoryBtn:active {
+    color: white;
+    background-color: black;
+    margin: 5px;
+    width: 150px;
+    border: 1px solid black;
+  }
+  .addSizeBtn {
+    color: black;
+    background-color: transparent;
+    border: 1px solid black;
+    margin: 5px;
+    width: 150px;
+    font-size: 12px;
+    padding: 5px;
+  }
+  .addSizeBtn:hover {
+    background-color: grey;
+    color: white;
+  }
+  .addedSize,
+  .addSizeBtn:active {
+    color: white;
+    background-color: black;
+    margin: 5px;
+    width: 150px;
+    font-size: 12px;
+    border: 1px solid black;
+    padding: 5px;
+  }
+  .submitBtn {
+    margin: 50px 0px;
+    padding: 10px 30px;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+  }
+  .submitBtn:hover {
+    color: black;
+    background-color: white;
+  }
+  .form-sizes {
+    width: 50vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .form-categories {
+    width: 50vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #add-product-form {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    top: 20vh;
+    position: absolute;
+  }
+  .form-input {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  input {
+    width: 50vw;
+  }
+  label {
+    margin-top: 10px;
+  }
+  .updateCategoryBtn, .updateSizeBtn {
+    background-color: #737373;
+    color: white;
+  }
+</style>
+<main style="margin-top: 300px;">
+  <form
+    id="add-product-form"
+    action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>"
+    method="POST"
+    onsubmit="validateForm(event)"
+  >
+    <div class="form-input">
+      <label for="product_name">Product Name</label>
+      <input
+        id="product_name_id"
+        type="text"
+        name="product_name"
+        value="<% if (editing) { %><%= product.product_name %><% } %>"
+        required
+      />
+    </div>
+    <div class="form-input">
+      <label for="description">Description</label>
+      <input
+        type="text"
+        name="description"
+        value="<% if (editing) { %><%= product.description %><% } %>"
+        required
+      />
+    </div>
+    <div class="form-input">
+      <label for="price">Price</label>
+      <input
+        type="number"
+        name="price"
+        step="0.01"
+        value="<% if (editing) { %><%= product.price %><% } %>"
+        required
+      />
+    </div>
+    <div class="form-input">
+      <label for="imageUrl">Image URL</label>
+      <input
+        type="text"
+        name="imageUrl"
+        value="<% if (editing) { %><%= product.imageUrl %><% } %>"
+        required
+      />
+    </div>
+    <% if (editing) { %>
+      <div style="margin: 50px 0px;">
+        <img src="<%= product.imageUrl %>">
+      </div>
+      <% } %>
+    <div class="form-input">
+      <label for="discount">Discount</label>
+      <input
+        type="number"
+        name="discount"
+        value="<% if (editing) { %><%= product.discount %><% } %>"
+        required
+      />
+    </div>
+    <div class="form-input">
+      <label for="ic_rent_mrp">Infinity Closet Price</label>
+      <input
+        type="number"
+        name="ic_rent_mrp"
+        value="<% if (editing) { %><%= product.ic_rent_mrp %><% } %>"
+        required
+      />
+    </div>
+    <div class="form-input">
+      <label for="quantity_available">Quantity Available</label>
+      <input
+        type="number"
+        name="quantity_available"
+        value="<% if (editing) { %><%= product.quantity_available %><% } %>"
+        required
+      />
+    </div>
+
+    <label>Sizes</label>
+    <div class="form-sizes">
+      <button
+        class="<% if (editing && size.includes('S')) {%>updateSizeBtn<%} else {%>addSizeBtn<%} %> addSizeBtn"
+        type="button"
+        value="S"
+        name="size"
+        onclick="addSize(event)"
+      >
+        Small
+      </button>
+      <button
+        class="<% if (editing && size.includes('M')) {%>updateSizeBtn<%} else {%>addSizeBtn<%} %> addSizeBtn"
+        type="button"
+        value="M"
+        name="size"
+        onclick="addSize(event)"
+      >
+        Medium
+      </button>
+      <button
+        class="<% if (editing && size.includes('L')) {%>updateSizeBtn<%} else {%>addSizeBtn<%} %> addSizeBtn"
+
+        type="button"
+        value="L"
+        name="size"
+        onclick="addSize(event)"
+      >
+        Large
+      </button>
+      <button
+        class="<% if (editing && size.includes('XL')) {%>updateSizeBtn<%} else {%>addSizeBtn<%} %> addSizeBtn"
+        type="button"
+        value="XL"
+        name="size"
+        onclick="addSize(event)"
+      >
+        Extra-Large
+      </button>
+      <button
+        class="<% if (editing && size.includes('XXL')) {%>updateSizeBtn<%} else {%>addSizeBtn<%} %> addSizeBtn"
+        type="button"
+        value="XXL"
+        name="size"
+        onclick="addSize(event)"
+      >
+        Extra-Extra-Large
+      </button>
+      <button
+        class="<% if (editing && size.includes('XXXL')) {%>updateSizeBtn<%} else {%>addSizeBtn<%} %> addSizeBtn"
+
+        type="button"
+        value="XXXL"
+        name="size"
+        onclick="addSize(event)"
+      >
+        Extra-Extra-Extra-Large
+      </button>
+    </div>
+
+    <label>Categories</label>
+    <div class="form-categories">
+      <button
+        class="<% if (editing && categories.includes('T-shirts')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+        type="button"
+        onclick="addCategory(event)"
+        value="T-shirts"
+      >
+        T-shirts
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Shirts')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+        type="button"
+        value="Shirts"
+        onclick="addCategory(event)"
+      >
+        Shirts
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Jeans')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+        type="button"
+        value="Jeans"
+        onclick="addCategory(event)"
+      >
+        Jeans
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Trousers')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+        type="button"
+        value="Trousers"
+        onclick="addCategory(event)"
+      >
+        Trousers
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Hoodies')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Hoodies"
+        onclick="addCategory(event)"
+      >
+        Hoodies
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Jackets')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Jackets"
+        onclick="addCategory(event)"
+      >
+        Jackets
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Jumpers')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Jumpers"
+        onclick="addCategory(event)"
+      >
+        Jumpers
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Blazers')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Blazers"
+        onclick="addCategory(event)"
+      >
+        Blazers
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Shorts')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Shorts"
+        onclick="addCategory(event)"
+      >
+        Shorts
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Casuals')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Casuals"
+        onclick="addCategory(event)"
+      >
+        Casuals
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Sportswear')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Sportswear"
+        onclick="addCategory(event)"
+      >
+        Sportswear
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Ethnicwear')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Ethnicwear"
+        onclick="addCategory(event)"
+      >
+        Ethnicwear
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Summer')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Summer"
+        onclick="addCategory(event)"
+      >
+        Summer
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Spring Fest')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Spring Fest"
+        onclick="addCategory(event)"
+      >
+        Spring Fest
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Monsoon')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Monsoon"
+        onclick="addCategory(event)"
+      >
+        Monsoon
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Winter')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Winter"
+        onclick="addCategory(event)"
+      >
+        Winter
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Formals')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Formals"
+        onclick="addCategory(event)"
+      >
+        Formals
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Party Wear')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+
+        type="button"
+        value="Party Wear"
+        onclick="addCategory(event)"
+      >
+        Party Wear
+      </button>
+      <button
+        class="<% if (editing && categories.includes('On Sale')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+        type="button"
+        value="On Sale"
+        onclick="addCategory(event)"
+      >
+        On Sale
+      </button>
+      <button
+        class="<% if (editing && categories.includes('Trendy')) {%>updateCategoryBtn<%} else {%>addCategoryBtn<%} %> addCategoryBtn"
+        type="button"
+        value="Trendy"
+        onclick="addCategory(event)"
+      >
+        Trendy
+      </button>
+    </div>
+
+    <% if (editing) { %>
+    <input type="hidden" value="<%= product._id %>" name="productId" />
+    <% } %>
+
+    <button
+      type="submit"
+      onclick="event.target.value=getResult();"
+      name="options"
+      class="submitBtn"
+    >
+      <% if (editing) { %>Update Product<% } else { %>Add Product<% } %>
+    </button>
+  </form>
+
+  <script>
+    let categories = [];
+    let sizes = [];
+
+    function categoryLogic(e) {
+      categories.push(e.target.value);
+      e.target.className = "addedCategory";
+      console.log("Categories", categories);
+      return categories;
+    }
+
+    function removeCategory(e) {
+      categories = categories.filter((cat) => cat !== e.target.value);
+      e.target.className = "addCategoryBtn";
+      console.log("Categories", categories);
+    }
+
+    function addCategory(e) {
+      return !categories.includes(e.target.value)
+        ? categoryLogic(e)
+        : removeCategory(e);
+    }
+
+    // function getCategories() {
+    //   return JSON.stringify(categories);
+    // }
+
+    function sizesLogic(e) {
+      sizes.push(e.target.value);
+      e.target.className = "addedSize";
+      console.log("Sizes", sizes);
+      return sizes;
+    }
+
+    function removeSize(e) {
+      sizes = sizes.filter((cat) => cat !== e.target.value);
+      e.target.className = "addSizeBtn";
+      console.log("Sizes", sizes);
+    }
+
+    function addSize(e) {
+      return !sizes.includes(e.target.value) ? sizesLogic(e) : removeSize(e);
+    }
+
+    // function getSizes() {
+    //   return JSON.stringify(sizes);
+    // }
+
+    function getResult() {
+      return JSON.stringify([categories, sizes]);
+    }
+    function validateForm(e) {
+      if (categories.length === 0) {
+        e.preventDefault();
+        alert("Please select atleast one category.");
+        return 0;
+      } else if (sizes.length === 0) {
+        e.preventDefault();
+        alert("Please select atleast one size.");
+        return 0;
+      } else {
+        alert("Product added successfully.");
+        return true;
+      }
+    }
+  </script>
+
+  <%- include('../includes/end.ejs') %>
+</main>
