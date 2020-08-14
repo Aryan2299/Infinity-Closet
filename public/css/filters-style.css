@@ -1,0 +1,96 @@
+@media only screen and (max-width: 800px) {
+    #filter-heading {
+    top: 16vh;
+    }
+}
+@media only screen and (min-width: 801px) {
+    #filter-heading {
+    top: 8vh;
+    }
+}
+
+li {
+    list-style: none;
+}
+.headings {
+    margin: 2rem 0px;
+}
+#filters-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20rem;
+}
+#filter-heading {
+    position: absolute;
+    font-size: 65px;
+    width: 100vw;
+    color: white;
+    background-color: gray;
+    padding: 2rem;
+}
+
+#filter-categories {
+    flex-wrap: wrap;
+    display: flex;
+    width: 90vw;
+    justify-content: center;
+
+}
+#filter-sizes {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    justify-content: center;
+}
+
+.addCategoryBtn {
+        width: 300px;
+}
+
+.addSizeBtn {
+        width: 80px;
+}
+
+.addCategoryBtn, .addSizeBtn {
+    color: black;
+    background-color: white;
+    border: 1px solid gray;
+    margin: 5px;
+padding: 5px;
+border-radius: 0px;
+}
+
+.addedSize, .addedCategory,
+  .addSizeBtn:active, .addedCategory:active {
+    color: white;
+    background-color: black;
+    margin: 5px;
+    border: 1px solid black;
+    padding: 5px;
+  }
+
+  .addedSize,
+  .addSizeBtn:active {
+    width: 80px;
+  }
+
+.addedCategory, .addedCategory:active {
+    width: 300px;
+}
+#form-submit {
+    margin-top: 10rem;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+#apply-filters-btn {
+    background-color: black;
+    color: white;
+    margin-bottom: 25px;
+    border: none;
+    border-radius: 3px ;
+    padding: 10px 50px;
+}
+#apply-filters-btn:hover {
+    background-color:#737373;
+}

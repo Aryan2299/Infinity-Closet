@@ -1,3 +1,5 @@
+const product = require("../../models/product");
+
 const mobile = window.matchMedia("(min-width: 1025px)");
 
 // const rentOptions = document.createElement("form");
@@ -44,6 +46,7 @@ heartIcon.style.bottom = "15px";
 heartIcon.style.position = "absolute";
 
 const cards = document.getElementsByClassName("productCard");
+const productImages = document.getElementById("product-images");
 const heartHover = document.getElementsByClassName("fa-heart");
 
 rentOptions.appendChild(btn);
@@ -145,5 +148,3 @@ mobile.matches ? products.setAttribute("class", "col-sm-6") : null;
 
 !mobile.matches ? (optionsBar.style.top = 0) : null;
 !mobile.matches ? (optionsBar.style.marginTop = "16.1vh") : null;
-
-

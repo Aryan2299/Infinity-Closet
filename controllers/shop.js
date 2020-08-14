@@ -1,10 +1,11 @@
 const Product = require("../models/product");
 const isAuth = require("../middleware/is-auth");
+const product = require("../models/product");
 const Jeans = require("../models/product").Jeans;
 const TShirts = require("../models/product").TShirts;
 
 exports.getHomePage = (req, res, next) => {
-  console.log(req.user)
+  console.log(req.user);
   res.render("shop/home", {
     pageTitle: "Shop",
     path: "/",
@@ -26,6 +27,127 @@ exports.getProductsMen = (req, res, next) => {
       });
     })
     .catch((err) => console.log(err));
+};
+
+exports.postProductsMen = (req, res, next) => {
+  const sortBy = req.body.sort;
+  const filterBy = req.body.filter;
+  const size = req.body.size;
+
+  console.log(size);
+
+  if (sortBy === "high") {
+    Product.find()
+      .sort({ ic_rent_mrp: 1 })
+      .then((products) => {
+        res.render("shop/productsMen", {
+          products: products,
+          pageTitle: "Shop",
+          path: "/men/products",
+          firstName: req.user ? req.user.firstName : "",
+          admin: false,
+        });
+      })
+      .catch((err) => console.log(err));
+  } else if (sortBy == "low") {
+    Product.find()
+      .sort({ ic_rent_mrp: -1 })
+      .then((products) => {
+        res.render("shop/productsMen", {
+          products: products,
+          pageTitle: "Shop",
+          path: "/men/products",
+          firstName: req.user ? req.user.firstName : "",
+          admin: false,
+        });
+      })
+      .catch((err) => console.log(err));
+  } else if (sortBy == "discount") {
+    Product.find()
+      .sort({ discount: -1 })
+      .then((products) => {
+        res.render("shop/productsMen", {
+          products: products,
+          pageTitle: "Shop",
+          path: "/men/products",
+          firstName: req.user ? req.user.firstName : "",
+          admin: false,
+        });
+      })
+      .catch((err) => console.log(err));
+  }
+
+  if (filterBy) {
+    Product.find({ categories: filterBy })
+      .then((products) => {
+        res.render("shop/productsMen", {
+          products: products,
+          pageTitle: "Shop",
+          path: "/men/products",
+          firstName: req.user ? req.user.firstName : "",
+          admin: false,
+        });
+      })
+      .catch((err) => console.log(err));
+  }
+
+  if (size) {
+    Product.find({ size: size })
+      .then((products) => {
+        res.render("shop/productsMen", {
+          products: products,
+          pageTitle: "Shop",
+          path: "/men/products",
+          firstName: req.user ? req.user.firstName : "",
+          admin: false,
+        });
+      })
+      .catch((err) => console.log(err));
+  }
+};
+
+exports.getFilters = (req, res, next) => {
+  Product.find().then((products) => {
+    res.render("shop/filters", {
+      products: products,
+      pageTitle: "Filters",
+      path: "/filters",
+      firstName: req.user ? req.user.firstName : "",
+      admin: false,
+    });
+  });
+};
+
+exports.postFilters = (req, res, next) => {
+  const filters = JSON.parse(req.body.filters);
+  const options = filters[0];
+  const sizes = filters[1];
+  console.log(filters);
+
+  Product.find({categories:{"$in": options}, size: {"$in": sizes} }).then(
+    (products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        pageTitle: "Filtered Search",
+        path: "/filters",
+        products: products,
+        admin: false,
+        firstName: req.user ? req.user.firstName : "",
+      });
+    }
+  );
+
+  // options.map(item => {
+  //   Product.find({categories: item }).then(products => {
+  //   res.render("shop/productsMen", {
+  //     pageTitle: "Filtered Search",
+  //     path: "/filters",
+  //     products: products,
+  //     admin: false,
+  //     firstName: req.user ? req.user.firstName : "",
+  //   });
+  // })
+  // })
 };
 
 exports.getAccessoriesMen = (req, res, next) => {
@@ -349,7 +471,7 @@ exports.getProductDetails = (req, res, next) => {
         product: product,
         pageTitle: product.product_name,
         firstName: req.user ? req.user.firstName : "",
-        admin: false
+        admin: false,
       });
     })
     .catch((err) => console.log(err));
@@ -364,6 +486,6 @@ exports.postProductDetails = (req, res, next) => {
 exports.getCart = (req, res, next) => {
   res.render("shop/cart", {
     pageTitle: "Cart",
-    firstName: req.user ? req.user.firstName : ""
+    firstName: req.user ? req.user.firstName : "",
   });
 };

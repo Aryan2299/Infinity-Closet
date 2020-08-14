@@ -1,0 +1,347 @@
+<%- include("../includes/head.ejs") %>
+<link rel="stylesheet" href="/css/filters-style.css" />
+<%- include("../includes/navigation.ejs")%>
+
+<h1 id="filter-heading">Filters</h1>
+<ul id="filters-list">
+  <li class="headings">
+          <h3>Brand</h3>
+
+  </li>
+  <li class="headings"><h3>Category</h3></li>
+  <li>
+    
+    <ol id="filter-categories">
+      <li>
+        
+          <button
+            type="button"
+            class="btn btn-light addCategoryBtn"
+            name="filter"
+            value="T-shirts"
+            onclick="addCategory(event)"
+            
+          >
+            T-Shirts
+          </button>
+    
+      </li>
+
+      <li>
+        
+          <button
+            type="button"
+            class="btn btn-light addCategoryBtn"
+            name="filter"
+            value="Shirts"
+          onclick="addCategory(event)"
+
+          >
+            Shirts
+          </button>
+    
+      </li>
+
+      <li>
+        
+          <button
+            type="button"
+            class="btn btn-light addCategoryBtn"
+            name="filter"
+            value="Jeans"
+          onclick="addCategory(event)"
+
+          >
+            Jeans
+          </button>
+    
+      </li>
+
+      <li>
+        
+          <button
+            type="button"
+            class="btn btn-light addCategoryBtn"
+            name="filter"
+            value="Trousers"
+          onclick="addCategory(event)"
+
+          >
+            Trousers
+          </button>
+    
+      </li>
+
+      <li>
+        
+          <button
+            type="button"
+            class="btn btn-light addCategoryBtn"
+            name="filter"
+            value="Hoodies"
+          onclick="addCategory(event)"
+
+          >
+            Hoodies and Sweatshirts
+          </button>
+    
+      </li>
+
+      <li>
+        
+          <button
+            type="button"
+            class="btn btn-light addCategoryBtn"
+            name="filter"
+            value="Jumpers"
+          onclick="addCategory(event)"
+
+          >
+            Jumpers
+          </button>
+    
+      </li>
+
+      <li>
+        
+          <button
+            type="button"
+            class="btn btn-light addCategoryBtn"
+            name="filter"
+            value="Blazers"
+          onclick="addCategory(event)"
+
+          >
+            Blazers
+          </button>
+    
+      </li>
+
+      <li>
+        
+          <button
+            type="button"
+            class="btn btn-light addCategoryBtn"
+            name="filter"
+            value="Shorts"
+          onclick="addCategory(event)"
+
+          >
+            Shorts
+          </button>
+    
+      </li>
+
+      <li>
+        
+          <button
+            type="button"
+            class="btn btn-light addCategoryBtn"
+            name="filter"
+            value="Casuals"
+          onclick="addCategory(event)"
+
+          >
+            Casuals
+          </button>
+    
+      </li>
+
+      <li>
+        
+          <button
+            type="button"
+            class="btn btn-light addCategoryBtn"
+            name="filter"
+            value="Sportswear"
+          onclick="addCategory(event)"
+
+          >
+            Sportswear
+          </button>
+    
+      </li>
+
+      <li>
+        
+          <button
+            type="button"
+            class="btn btn-light addCategoryBtn"
+            name="filter"
+            value="Ethnicwear"
+          onclick="addCategory(event)"
+
+          >
+            Ethnicwear
+          </button>
+    
+      </li>
+
+      <li>
+        
+          <button
+            type="button"
+            class="btn btn-light addCategoryBtn"
+            name="filter"
+            value="Summer"
+          onclick="addCategory(event)"
+
+          >
+            Summer
+          </button>
+    
+      </li>
+
+      <li>
+        <button
+          type="button"
+          class="btn btn-light addCategoryBtn"
+          name="filter"
+          value="Spring Fest"
+          onclick="addCategory(event)"
+
+        >
+          Spring Fest
+        </button>
+      </li>
+
+      <li><button
+          type="button"
+          class="btn btn-light addCategoryBtn"
+          name="filter"
+          value="Monsoon"
+          onclick="addCategory(event)"
+
+        >
+          Monsoon
+        </button></li>
+
+      <li><button
+          type="button"
+          class="btn btn-light addCategoryBtn"
+          name="filter"
+          value="Winter"
+          onclick="addCategory(event)"
+
+        >
+          Winter
+        </button></li>
+      <li><button
+          type="button"
+          class="btn btn-light addCategoryBtn"
+          name="filter"
+          value="Formals"
+          onclick="addCategory(event)"
+
+        >
+          Formals
+        </button></li>
+      <li><button
+          type="button"
+          class="btn btn-light addCategoryBtn"
+          name="filter"
+          value="Party Wear"
+          onclick="addCategory(event)"
+
+        >
+          Party Wear
+        </button></li>
+      <li><button
+          type="button"
+          class="btn btn-light addCategoryBtn"
+          name="filter"
+          value="On Sale"
+          onclick="addCategory(event)"
+
+        >
+          On Sale
+        </button></li>
+      <li><button
+          type="button"
+          class="btn btn-light addCategoryBtn"
+          name="filter"
+          value="Trendy"
+          onclick="addCategory(event)"
+        >
+          Trendy
+        </button></li>
+    </ol>
+  </li>
+  <li class="headings"><h3>Colour</h3></li>
+  <li>
+      <li class="headings"><h3>Size</h3></li>
+
+      <ol id="filter-sizes">
+          <li><button
+          type="button"
+          class="btn btn-light addSizeBtn" 
+          name="filter"
+          value="S"
+                  onclick="addSize(event)"
+
+        >
+          S
+        </button></li>
+          <li><button
+          type="button"
+          class="btn btn-light addSizeBtn"
+          name="filter"
+          value="M"
+        onclick="addSize(event)"
+
+        >
+          M
+        </button></li>
+
+          <li><button
+          type="button"
+          class="btn btn-light addSizeBtn"
+          name="filter"
+          value="L"
+        onclick="addSize(event)"
+
+        >
+          L
+        </button></li>
+          <li><button
+          type="button"
+          class="btn btn-light addSizeBtn"
+          name="filter"
+          value="XL"
+        onclick="addSize(event)"
+
+        >
+          XL
+        </button></li>
+          <li><button
+          type="button"
+          class="btn btn-light addSizeBtn"
+          name="filter"
+          value="XXL"
+        onclick="addSize(event)"
+
+        >
+          XXL
+        </button></li>
+          <li><button
+          type="button"
+          class="btn btn-light addSizeBtn"
+          name="filter"
+          value="XXXL"
+        onclick="addSize(event)"
+
+        >
+          XXXL
+        </button></li>
+      </ol>
+
+  </li>
+</ul>
+
+<form action="/filters" id="form-submit" method="POST">
+  <button type="submit" id="apply-filters-btn" name="filters" onclick="event.target.value=getResult()">Apply Filters</button>
+</form>
+
+<script src="/js/add-size-category.js"></script>
+
+<%- include("../includes/end.ejs") %>

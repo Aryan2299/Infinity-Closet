@@ -141,6 +141,24 @@ include('../includes/admin-nav.ejs')%>
         required
       />
     </div>
+
+    
+    <div id="images-div">
+      <button type="button" id="add-image-btn" onclick="addImages()">Add Images</button>
+    </div>
+
+
+
+    <!-- <div class="form-input additional-images">
+      <label for="images">Image URL</label>
+      <input
+        type="text"
+        name="images"
+        value="<% if (editing) { %><%= product.images %><% } %>"
+      />
+    </div> -->
+
+
     <% if (editing) { %>
       <div style="margin: 50px 0px;">
         <img src="<%= product.imageUrl %>">
@@ -426,71 +444,8 @@ include('../includes/admin-nav.ejs')%>
     </button>
   </form>
 
-  <script>
-    let categories = [];
-    let sizes = [];
-
-    function categoryLogic(e) {
-      categories.push(e.target.value);
-      e.target.className = "addedCategory";
-      console.log("Categories", categories);
-      return categories;
-    }
-
-    function removeCategory(e) {
-      categories = categories.filter((cat) => cat !== e.target.value);
-      e.target.className = "addCategoryBtn";
-      console.log("Categories", categories);
-    }
-
-    function addCategory(e) {
-      return !categories.includes(e.target.value)
-        ? categoryLogic(e)
-        : removeCategory(e);
-    }
-
-    // function getCategories() {
-    //   return JSON.stringify(categories);
-    // }
-
-    function sizesLogic(e) {
-      sizes.push(e.target.value);
-      e.target.className = "addedSize";
-      console.log("Sizes", sizes);
-      return sizes;
-    }
-
-    function removeSize(e) {
-      sizes = sizes.filter((cat) => cat !== e.target.value);
-      e.target.className = "addSizeBtn";
-      console.log("Sizes", sizes);
-    }
-
-    function addSize(e) {
-      return !sizes.includes(e.target.value) ? sizesLogic(e) : removeSize(e);
-    }
-
-    // function getSizes() {
-    //   return JSON.stringify(sizes);
-    // }
-
-    function getResult() {
-      return JSON.stringify([categories, sizes]);
-    }
-    function validateForm(e) {
-      if (categories.length === 0) {
-        e.preventDefault();
-        alert("Please select atleast one category.");
-        return 0;
-      } else if (sizes.length === 0) {
-        e.preventDefault();
-        alert("Please select atleast one size.");
-        return 0;
-      } else {
-        alert("Product added successfully.");
-        return true;
-      }
-    }
+  <script src="/js/add-size-category.js">
+    
   </script>
 
   <%- include('../includes/end.ejs') %>

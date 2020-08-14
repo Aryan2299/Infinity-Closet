@@ -55,6 +55,7 @@ exports.postAddProducts = (req, res, next) => {
   const categsAndSizes = req.body.options;
   const categories = JSON.parse(categsAndSizes)[0];
   const sizes = JSON.parse(categsAndSizes)[1];
+  const additionalImages = JSON.parse(categsAndSizes)[2];
 
   const product = new Product({
     product_name: product_name,
@@ -66,6 +67,7 @@ exports.postAddProducts = (req, res, next) => {
     ic_rent_mrp: ic_rent_mrp,
     quantity_available: quantity_available,
     categories: categories,
+    additionalImages: additionalImages
   });
   product
     .save()
@@ -75,9 +77,10 @@ exports.postAddProducts = (req, res, next) => {
     })
     .catch((err) => console.log(err));
 
-  console.log("product_name: ", product_name);
   console.log("categories: ", categories);
   console.log("sizes: ", sizes);
+  console.log("images: ", additionalImages);
+
 };
 
 exports.getEditProduct = (req, res, next) => {

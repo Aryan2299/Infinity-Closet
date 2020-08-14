@@ -9,34 +9,119 @@
     </button>
 
     <div id="sortByOptions" class="sortByOpt">
-      <button type="button" class="btn btn-light">Recommended</button>
-      <button type="button" class="btn btn-light">
+      <button type="button" class="btn btn-light" id="sort-by-recommended" >Recommended</button>
+      <form action="/men/products" method="post"><button type="submit" class="btn btn-light" name="sort" value="low">
         Price: High to Low
-      </button>
-      <button type="button" class="btn btn-light">
+      </button></form>
+
+      <form action="/men/products" method="post"><button type="submit" class="btn btn-light" name="sort" value="high">
         Price: Low to High
-      </button>
+      </button></form>
+      
       <button type="button" class="btn btn-light">Popularity</button>
-      <button type="button" class="btn btn-light">Discount</button>
+
+      <form action="/men/products" method="post"><button type="submit" class="btn btn-light" name="sort" value="discount">Discount</button></form>
+      
     </div>
   </div>
 
   <div id="hover"></div>
 
   <div id="dropdown">
-    <button
+    <a href="/filters"><button
       id="sortByButton"
       class="btn btn-secondary"
-      onclick="showFilterOptions()"
-    >
-      Filter By <i class="fa fa-angle-down" style="margin-left: 10px;"></i>
-    </button>
 
-    <div id="sortByOptions" class="filterOpt">
-      <button type="button" class="btn btn-light">Brand</button>
-      <button type="button" class="btn btn-light">Category</button>
-      <button type="button" class="btn btn-light">Size</button>
-      <button type="button" class="btn btn-light">Colour</button>
-    </div>
+    >
+      Filters
+    </button></a>
+
+    <!-- <div id="sortByOptions" class="filterOpt">
+      <button type="button" class="btn btn-light"><h3>Brand</h3></button>
+
+      <button type="button" class="btn btn-light"><h3>Category</h3></button>
+      
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="T-shirts">T-Shirts</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Shirts">Shirts</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Jeans">Jeans</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Trousers">Trousers</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="hoodies">Hoodies and Sweatshirts</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Jumpers">Jumpers</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Blazers">Blazers</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Shorts">Shorts</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Casuals">Casuals</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Sportswear">Sportswear</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Ethnicwear">Ethnicwear</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Summer">Summer</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Spring Fest">Spring Fest</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Monsoon">Monsoon</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Winter">Winter</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Formals">Formals</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Party Wear">Party Wear</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="On Sale">On Sale</button>
+      </form>
+      <form action="/men/products" method="post">
+        <button type="submit" class="btn btn-light" name="filter" value="Trendy">Trendy</button>
+      </form>
+      
+      
+      <button type="button" class="btn btn-light"><h3>Size</h3></button>
+      <form action="/men/products" method="POST">
+        <button type="submit" class="btn btn-light" name="size" value="S">S</button>
+      </form>
+      <form action="/men/products" method="POST">
+        <button type="submit" class="btn btn-light" name="size" value="M">M</button>
+      </form>
+      <form action="/men/products" method="POST">
+        <button type="submit" class="btn btn-light" name="size" value="L">L</button>
+      </form>
+      <form action="/men/products" method="POST">
+        <button type="submit" class="btn btn-light" name="size" value="XL">XL</button>
+      </form>
+      <form action="/men/products" method="POST">
+        <button type="submit" class="btn btn-light" name="size" value="XXL">XXL</button>
+      </form>
+      <form action="/men/products" method="POST">
+        <button type="submit" class="btn btn-light" name="size" value="XXXL">XXXL</button>
+      </form>
+
+
+      <button type="button" class="btn btn-light"><h3>Colour</h3></button>
+    </div> -->
   </div>
 </div>

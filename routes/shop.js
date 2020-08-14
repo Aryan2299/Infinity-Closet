@@ -7,6 +7,10 @@ const isAuth = require("../middleware/is-auth");
 
 router.get("/", shopController.getHomePage);
 router.get("/men/products", shopController.getProductsMen);
+router.post("/men/products", shopController.postProductsMen);
+router.get("/filters", shopController.getFilters)
+router.post("/filters", shopController.postFilters);
+
 router.get("/men/products/clothes", shopController.getProductsMen);
 router.get("/men/products/accessories", shopController.getAccessoriesMen);
 router.get("/men/products/shirts", shopController.getShirtsMen);

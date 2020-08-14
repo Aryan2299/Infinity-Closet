@@ -10,15 +10,16 @@
       overflow-x: hidden;
     }
     .product-info {
-      margin-top: 50px;
+      margin-top: -650px;
       width: 95vw;
-      height: 500px;
+      height: 500px;     
       justify-content: flex-start;
-      align-items: stretch;
+      align-items: flex-start;
     }
     .product-image {
       display: flex;
       justify-content: center;
+      max-height: 75vh;
     }
     .product-image img {
       width: 95vw;
@@ -37,7 +38,12 @@
     .product-image {
       width: 50vw;
       height: 100%;
+      display: flex;
+      justify-content: center;
     }
+    .images-list {
+    flex-direction: column;
+  }
     .product-info {
       width: 40vw;
       /* justify-content: stretch; */
@@ -54,9 +60,14 @@
     display: flex;
     margin: 10vh 5px;
   }
-  .product-image img {
+  .product-image {
+    display: flex;
+    max-height: 75vh;
+  }
+  #selected {
     border: 1px solid #fbfbfb;
     box-shadow: 0px 5px 10px -5px black;
+
   }
   li {
     list-style: none;
@@ -137,19 +148,39 @@
     padding: 10px;
     width: 300px;
   }
-  /* .buying-options-btn-highlighted:hover {
-      background-color: #606060;
-      color: white;
-      border: 1px solid #606060;
-
-  } */
+  .images-list-image {
+    height: 50px;
+    width: 75px;
+    margin: 3px 0px;
+  }
+  .images-list {
+    display: flex;
+    justify-content: flex-start;
+  }
+  #images {
+    margin: 1rem 5px;
+    max-height: 32.5rem;
+    /* background-color: #606060; */
+    /* padding: 5px; */
+  }
 </style>
 
 
 <main>
   <div class="product-image">
-    <img src="<%=product.imageUrl%>" class="product-image" />
+  <img src="<%=product.imageUrl%>" id="selected" onclick="changeImageFocus(event)" />
   </div>
+
+  <div id="images">
+    <ul class="images-list container">
+  <img src="<%=product.imageUrl%>" id="<%=product.imageUrl%>" class="images-list-image" onclick="changeImageFocus(event)" />
+    
+          <% for (image of product.additionalImages) { %> 
+      <li><img src="<%=image%>" id="<%=image%>" class="images-list-image" onclick="changeImageFocus(event)"></li>
+    <% } %>
+          </ul>
+  </div>
+
   <div class="product-info">
     <div class="product-name">
       <h4 class="product-product_name"><%=product.product_name%></h4>
@@ -174,7 +205,7 @@
       >
     </div>
     <div class="product-sizes">
-      <!-- <label>Sizes Available: </label> -->
+
       <ul class="sizes-list">
         <% for (size of product.size) { %>
         <li><button type="button" class="size-btn"><%=size%></button></li>
@@ -203,17 +234,9 @@
     </div>
       <% } %>
   </div>
-</main>
-<script>
-  //   const sizeBtn = document.getElementsByClassName("size-btn");
 
-  //   for (let i = 0; i < sizeBtn.length; i++) {
-  //     sizeBtn[i].addEventListener("click", function () {
-  //       sizeBtn[i].style.backgroundColor =
-  //         sizeBtn[i].style.backgroundColor === "white" ? "black" : "white";
-  //         sizeBtn[i].style.color =
-  //         sizeBtn[i].style.backgroundColor === "white" ? "black" : "white";
-  //     });
-  //   }
-</script>
+</main>
+
+  <script src="/js/product-actions.js">
+  </script>
 <%-include('../includes/end.ejs')%>
