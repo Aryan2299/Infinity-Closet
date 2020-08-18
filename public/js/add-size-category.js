@@ -1,5 +1,6 @@
 let categories = [];
 let sizes = [];
+const gender = new Array(1).fill("Men")
 
 function categoryLogic(e) {
   categories.push(e.target.value);
@@ -38,7 +39,7 @@ function addSize(e) {
 }
 
 function getResult() {
-  return JSON.stringify([categories, sizes, additionalImages]);
+  return JSON.stringify([categories, sizes, additionalImages, gender]);
 }
 function validateForm(e) {
   if (categories.length === 0) {
@@ -46,13 +47,13 @@ function validateForm(e) {
     alert("Please select atleast one category.");
     return 0;
   } else if (sizes.length === 0) {
-    e.preventDefault();
-    alert("Please select atleast one size.");
-    return 0;
-  } else {
-    alert("Product added successfully.");
-    return true;
-  }
+           e.preventDefault();
+           alert("Please select atleast one size.");
+           return 0;
+         } else {
+           alert("Product added successfully.");
+           return true;
+         }
 }
     let additionalImages = [];
 function addImages() {
@@ -85,4 +86,27 @@ const imagesDiv = document.getElementById("images-div");
 
 function getImageUrls() {
     return additionalImages;
+}
+
+  const men = document.getElementById("gender-men");
+  const women = document.getElementById("gender-women");
+
+
+function selectGender(event) {
+  gender.fill(event.target.value)
+  console.log(gender)
+  if (gender[0] === "Men") {
+    men.style.backgroundColor = "black"
+    men.style.color = "white";
+    women.style.backgroundColor = "white";
+    women.style.color = "black";
+
+  } else if (gender[0] === "Women") {
+    women.style.backgroundColor = "black";
+    women.style.color = "white";
+
+    men.style.backgroundColor = "white"
+    men.style.color = "black";
+
+  }
 }

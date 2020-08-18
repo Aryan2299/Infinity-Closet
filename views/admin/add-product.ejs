@@ -95,6 +95,24 @@ include('../includes/admin-nav.ejs')%>
     background-color: #737373;
     color: white;
   }
+  
+  .gender-select {
+    display: flex;
+    margin: 5rem;
+  }
+  #gender-men, #gender-women {
+    width: 150px;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    padding: 10px;
+  }
+  
+  #gender-men {
+    background-color: black;
+    color: white;
+  }
+  
 </style>
 <main style="margin-top: 300px;">
   <form
@@ -103,6 +121,11 @@ include('../includes/admin-nav.ejs')%>
     method="POST"
     onsubmit="validateForm(event)"
   >
+  <div class="gender-select">
+    <button type="button" id="gender-men" value="Men" onclick="selectGender(event)">Men</button>
+    <button type="button" id="gender-women" value="Women"  onclick="selectGender(event)">Women</button>
+  </div>
+
     <div class="form-input">
       <label for="product_name">Product Name</label>
       <input

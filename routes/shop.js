@@ -7,8 +7,9 @@ const isAuth = require("../middleware/is-auth");
 
 router.get("/", shopController.getHomePage);
 router.get("/men/products", shopController.getProductsMen);
+
 router.post("/men/products", shopController.postProductsMen);
-router.get("/filters", shopController.getFilters)
+router.get("/filters", shopController.getFilters);
 router.post("/filters", shopController.postFilters);
 
 router.get("/men/products/clothes", shopController.getProductsMen);
@@ -32,6 +33,9 @@ router.get("/men/products/summer", shopController.getSummerMen);
 router.get("/men/products/winter", shopController.getWinterMen);
 router.get("/men/products/spring", shopController.getSpringMen);
 router.get("/men/products/sale", shopController.getSaleMen);
+
+router.get("/women/products", shopController.getProductsWomen);
+router.get("/women/products/clothes", shopController.getProductsWomen);
 
 router.get("/product/:productId", shopController.getProductDetails);
 router.post("/product/:productId", shopController.postProductDetails);

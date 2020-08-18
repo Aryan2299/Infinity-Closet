@@ -20,6 +20,9 @@
     <button id="closeBtn" class="btn btn-link" onclick="hideSideBar()">
       &times;
     </button>
+      
+    <% if (gender === "men") { %>
+      <!-- Sidenav for men's products -->
     <h3 class="category">New Arrivals</h3>
     <a href="/men/products/clothes"
       ><button
@@ -216,5 +219,207 @@
         On Sale
       </button></a
     >
+
+
+    <% } else if (gender === "women") { %>
+      <!-- Sidenav for women's products -->
+      <h3 class="category">New Arrivals</h3>
+    <a href="/women/products/clothes"
+      ><button
+        type="button"
+        class="categoriesBtn"
+        id="<% if (path === '/women/products' || path === '/women/products/clothes') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+      >
+        Clothes
+      </button></a
+    >
+    <a href="/women/products/accessories"
+      ><button
+        id="<% if (path === '/women/products/accessories') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Accessories
+      </button></a
+    >
+
+    <h3 class="category">Shop by Products</h3>
+    <a href="/women/products/tshirts"
+      ><button
+        id="<% if (path === '/women/products/tshirts') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        T-Shirts
+      </button></a
+    >
+    <a href="/women/products/shirts"
+      ><button
+        id="<% if (path === '/women/products/shirts') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Shirts
+      </button></a
+    >
+    <a href="/women/products/jeans"
+      ><button
+        id="<% if (path === '/women/products/jeans') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Jeans
+      </button></a
+    >
+    <a href="/women/products/trousers"
+      ><button
+        id="<% if (path === '/women/products/trousers') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Trousers
+      </button></a
+    >
+    <a href="/women/products/jackets"
+      ><button
+        id="<% if (path === '/women/products/jackets') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Jackets & Coats
+      </button></a
+    >
+    <a href="/women/products/hoodies"
+      ><button
+        id="<% if (path === '/women/products/hoodies') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Hoodies & Sweatshirts
+      </button></a
+    >
+    <a href="/women/products/cardigans"
+      ><button
+        id="<% if (path === '/women/products/cardigans') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Cardigans
+      </button></a
+    >
+    <a href="/women/products/blazers"
+      ><button
+        id="<% if (path === '/women/products/blazers') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Blazers
+      </button></a
+    >
+    <a href="/women/products/shorts"
+      ><button
+        id="<% if (path === '/women/products/shorts') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Shorts
+      </button></a
+    >
+    <a href="/women/products/sports"
+      ><button
+        id="<% if (path === '/women/products/sports') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Sports Wear
+      </button></a
+    >
+
+    <h3 class="category">Shop by Occasions</h3>
+    <a href="/women/products/basics"
+      ><button
+        type="button"
+        class="categoriesBtn"
+        id="<% if (path === '/women/products/basics') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+      >
+        Basics
+      </button></a
+    >
+    <a href="/women/products/formals"
+      ><button
+        id="<% if (path === '/women/products/formals') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Formals & Office Wear
+      </button></a
+    >
+    <a href="/women/products/casuals"
+      ><button
+        id="<% if (path === '/women/products/casuals') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Casuals
+      </button></a
+    >
+    <a href="/women/products/party"
+      ><button
+        id="<% if (path === '/women/products/party') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Party Wear
+      </button></a
+    >
+    <a href="/women/products/indian"
+      ><button
+        id="<% if (path === '/women/products/indian') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Indian Ethnic Wear
+      </button></a
+    >
+
+    <h3 class="category">Trending Now</h3>
+    <a href="/women/products/summer"
+      ><button
+        id="<% if (path === '/women/products/summer') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Summer Collection
+      </button></a
+    >
+    <a href="/women/products/winter"
+      ><button
+        id="<% if (path === '/women/products/winter') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Winter Collection
+      </button></a
+    >
+    <a href="/women/products/spring"
+      ><button
+        id="<% if (path === '/women/products/spring') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        Spring Fest
+      </button></a
+    >
+    <a href="/women/products/sale"
+      ><button
+        id="<% if (path === '/women/products/sale') {%><%='selected'%><%} else {%><%= '' %><%} %>"
+        type="button"
+        class="categoriesBtn"
+      >
+        On Sale
+      </button></a
+    >
+      <% } %>
+ 
   </section>
 </div>

@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 
 const Admin = require("../models/admin");
 const Product = require("../models/product");
+const { options } = require("../routes/shop");
 
 exports.getProductsAdmin = (req, res, next) => {
   Product.find()
@@ -57,18 +58,25 @@ exports.postAddProducts = (req, res, next) => {
   const sizes = JSON.parse(categsAndSizes)[1];
   const additionalImages = JSON.parse(categsAndSizes)[2];
 
-  const product = new Product({
-    product_name: product_name,
-    description: description,
-    size: sizes,
-    price: price,
-    imageUrl: imageUrl,
-    discount: discount,
-    ic_rent_mrp: ic_rent_mrp,
-    quantity_available: quantity_available,
-    categories: categories,
-    additionalImages: additionalImages
-  });
+  const gender = JSON.parse(categsAndSizes)[3]
+  // if (gender.includes("Men")) {
+  //   console.log("men")
+  // } else if (gender.includes("Women")) {
+  //   console.log("women")
+  // }
+           const product = new Product({
+             product_name: product_name,
+             description: description,
+             size: sizes,
+             price: price,
+             imageUrl: imageUrl,
+             discount: discount,
+             ic_rent_mrp: ic_rent_mrp,
+             quantity_available: quantity_available,
+             categories: categories,
+             additionalImages: additionalImages,
+             gender: gender
+           });
   product
     .save()
     .then((result) => {
@@ -76,11 +84,10 @@ exports.postAddProducts = (req, res, next) => {
       res.redirect("/admin/add-product");
     })
     .catch((err) => console.log(err));
-
+  console.log("gender: ", gender)
   console.log("categories: ", categories);
   console.log("sizes: ", sizes);
   console.log("images: ", additionalImages);
-
 };
 
 exports.getEditProduct = (req, res, next) => {

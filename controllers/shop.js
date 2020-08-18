@@ -24,6 +24,7 @@ exports.getProductsMen = (req, res, next) => {
         path: "/men/products",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -118,6 +119,22 @@ exports.getFilters = (req, res, next) => {
   });
 };
 
+exports.getProductsWomen = (req, res, next) => {
+  Product.find({gender: "Women"})
+    .then((products) => {
+      console.log(products);
+      res.render("shop/productsMen", {
+        products: products,
+        pageTitle: "Shop",
+        path: "/women/products",
+        firstName: req.user ? req.user.firstName : "",
+        admin: false,
+        gender: "women"
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
 exports.postFilters = (req, res, next) => {
   const filters = JSON.parse(req.body.filters);
   const options = filters[0];
@@ -160,6 +177,7 @@ exports.getAccessoriesMen = (req, res, next) => {
         path: "/men/products/accessories",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men"
       });
     })
     .catch((err) => console.log(err));
@@ -175,6 +193,7 @@ exports.getTShirtsMen = (req, res, next) => {
         path: "/men/products/tshirts",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -190,6 +209,7 @@ exports.getShirtsMen = (req, res, next) => {
         path: "/men/products/shirts",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -218,6 +238,7 @@ exports.getJeansMen = (req, res, next) => {
         path: "/men/products/jeans",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -233,6 +254,7 @@ exports.getTrousersMen = (req, res, next) => {
         path: "/men/products/trousers",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -248,6 +270,7 @@ exports.getJacketsMen = (req, res, next) => {
         path: "/men/products/jackets",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -263,6 +286,7 @@ exports.getHoodiesMen = (req, res, next) => {
         path: "/men/products/hoodies",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -278,6 +302,7 @@ exports.getCardigansMen = (req, res, next) => {
         path: "/men/products/cardigans",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -293,6 +318,7 @@ exports.getBlazersMen = (req, res, next) => {
         path: "/men/products/blazers",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -308,6 +334,7 @@ exports.getShortsMen = (req, res, next) => {
         path: "/men/products/shorts",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -323,6 +350,7 @@ exports.getSportsMen = (req, res, next) => {
         path: "/men/products/sports",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -338,6 +366,7 @@ exports.getBasicsMen = (req, res, next) => {
         path: "/men/products/basics",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -353,6 +382,7 @@ exports.getFormalsMen = (req, res, next) => {
         path: "/men/products/formals",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -368,6 +398,7 @@ exports.getCasualsMen = (req, res, next) => {
         path: "/men/products/casuals",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -383,6 +414,7 @@ exports.getPartyMen = (req, res, next) => {
         path: "/men/products/party",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -398,6 +430,7 @@ exports.getIndianMen = (req, res, next) => {
         path: "/men/products/indian",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -413,6 +446,7 @@ exports.getSummerMen = (req, res, next) => {
         path: "/men/products/summer",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -428,6 +462,7 @@ exports.getWinterMen = (req, res, next) => {
         path: "/men/products/winter",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -443,6 +478,7 @@ exports.getSpringMen = (req, res, next) => {
         path: "/men/products/spring",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
@@ -458,6 +494,7 @@ exports.getSaleMen = (req, res, next) => {
         path: "/men/products/sale",
         firstName: req.user ? req.user.firstName : "",
         admin: false,
+        gender: "men",
       });
     })
     .catch((err) => console.log(err));
